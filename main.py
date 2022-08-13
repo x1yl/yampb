@@ -7,13 +7,13 @@ from discord import Color
 from discord.utils import get
 from discord.ext.commands import has_permissions, MissingPermissions
 from tokens import *
-@client.command(pass_context=True)
-async def rockpaperscissors(ctx, message):
-  await message.channel.send("Rock, Paper or Scissors?", reference=message)
 
 intents = discord.Intents.all()
 intents.members = True
 client = commands.Bot(command_prefix= "!", intents=intents)
+@client.command(pass_context=True)
+async def rockpaperscissors(ctx, message):
+  await message.channel.send("Rock, Paper or Scissors?", reference=message)
 
 ourmessage = ""
 @client.event
