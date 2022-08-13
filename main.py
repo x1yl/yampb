@@ -50,6 +50,15 @@ async def on_message(message):
         await message.channel.send("I choose paper, gg you win <a:8922_Letter_W:945766211436818525>!", reference=message)
       elif a == 3:
         await message.channel.send("I choose scissors, draw. Try again!", reference=message)
+    if message.content == "!scissor":
+      a=random.randint(1,3)
+      print(a)
+      if a == 1:
+        await message.channel.send("I choose rock, you lost <a:6141_Letter_L:945766211520708738>", reference=message)
+      elif a == 2:
+        await message.channel.send("I choose paper, gg you win <a:8922_Letter_W:945766211436818525>!", reference=message)
+      elif a == 3:
+        await message.channel.send("I choose scissors, draw. Try again!", reference=message)
 @client.event
 async def on_raw_reaction_add(payload):
   messageID = '992448354715959407'
