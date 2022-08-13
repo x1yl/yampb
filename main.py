@@ -7,14 +7,13 @@ from discord import Color
 from discord.utils import get
 from discord.ext.commands import has_permissions, MissingPermissions
 from tokens import *
-
-intents = discord.Intents.all()
-intents.members = True
-client = commands.Bot(command_prefix= (get_prefix), intents=intents)
 def get_prefix(client, message): ##first we define get_prefix
     with open('prefixes.json', 'r') as f: ##we open and read the prefixes.json, assuming it's in the same file
         prefixes = json.load(f) #load the json as prefixes
     return prefixes[str(message.guild.id)] #recieve the prefix for the guild id given
+intents = discord.Intents.all()
+intents.members = True
+client = commands.Bot(command_prefix= (get_prefix), intents=intents)
 @client.event
 async def on_guild_join(guild): #when the bot joins the guild
     with open('prefixes.json', 'r') as f: #read the prefix.json file
