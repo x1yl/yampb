@@ -10,7 +10,7 @@ from tokens import *
 
 intents = discord.Intents.all()
 intents.members = True
-client = commands.Bot(command_prefix= "!", intents=intents)
+client = commands.Bot(command_prefix='!', intents=intents)
 @client.command(pass_context=True)
 async def rockpaperscissors(ctx, message):
   await message.channel.send("Rock, Paper or Scissors?", reference=message)
