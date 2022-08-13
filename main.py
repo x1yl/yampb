@@ -23,15 +23,24 @@ async def on_ready():
 async def on_message(message):
     if message.content == "ping":
         await message.channel.send("pong:ping_pong:", reference=message)
-    if message.content == "i choose rock":
+    if message.content == "!rock":
       a=random.randint(1,3)
       print(a)
       if a == 1:
         await message.channel.send("I choose rock, draw", reference=message)
       elif a == 2:
-        await message.channel.send("I choose paper, gg you win!", reference=message)
+        await message.channel.send("I choose paper,you lost <a:6141_Letter_L:945766211520708738>", reference=message)
       elif a == 3:
-        await message.channel.send("I choose scissors, you lost <:6141_Letter_L:945766211520708738>", reference=message)
+        await message.channel.send("I choose scissors, gg you win!", reference=message)
+    if message.content == "!paper":
+      a=random.randint(1,3)
+      print(a)
+      if a == 1:
+        await message.channel.send("I choose rock, gg you win!", reference=message)
+      elif a == 2:
+        await message.channel.send("I choose paper, draw. Try again", reference=message)
+      elif a == 3:
+        await message.channel.send("I choose scissors, you lost <a:6141_Letter_L:945766211520708738>", reference=message)
 @client.event
 async def on_raw_reaction_add(payload):
   messageID = '992448354715959407'
