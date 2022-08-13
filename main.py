@@ -14,6 +14,10 @@ intents.members = True
 client = commands.Bot(command_prefix='!', intents=intents)
 ourmessage = ""
 @client.event
+async def on_message(message):
+    if message.content == "ping":
+        await message.channel.send("pong", reference=message)
+@client.event
 async def on_ready():
   print(f"Logged in as {client.user}")
   print("---------------------------")
