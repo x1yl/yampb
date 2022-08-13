@@ -24,7 +24,8 @@ async def on_message(message):
     if message.content == "ping":
         await message.channel.send("pong:ping_pong:", reference=message)
     if message.content == "i choose rock":
-      a=random.randomint(1,3)
+      a=random.randint(1,3)
+      print(a)
       if a == 1:
         await message.channel.send("I choose rock, draw", reference=message)
       elif a == 2:
