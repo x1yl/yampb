@@ -10,21 +10,18 @@ from tokens import *
 
 intents = discord.Intents.all()
 intents.members = True
-client = commands.Bot(command_prefix='!', intents=intents)
-@client.command(pass_context=True)
-async def rockpaperscissors(ctx, message):
-  await message.channel.send("Rock, Paper or Scissors?", reference=message)
 
+client = commands.Bot(command_prefix='!', intents=intents)
 ourmessage = ""
-@client.event
-async def on_message(message):
-    if message.content == "ping":
-        await message.channel.send("pong:ping_pong:", reference=message)
+
 @client.event
 async def on_ready():
   print(f"Logged in as {client.user}")
   print("---------------------------")
-
+@client.event
+async def on_message(message):
+    if message.content == "ping":
+        await message.channel.send("pong:ping_pong:", reference=message)
 @client.event
 async def on_raw_reaction_add(payload):
   messageID = '992448354715959407'
