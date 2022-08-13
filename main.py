@@ -10,8 +10,39 @@ from tokens import *
 
 intents = discord.Intents.all()
 intents.members = True
+def get_prefix(client,message):
+  with open("prefixes.json", "r") as f:
+    prefixes = json.load(f)
+  return prefixes[str(message.guild.id)]
 
-client = commands.Bot(command_prefix='!', intents=intents)
+client = commands.Bot(command_prefix=get_prefix, intents=intents)
+@client.event
+async def on_guild_join(guild):
+  with open("prefixes.json", "r") as f:
+    prefixes = json.load(f)
+  prefixes[str(guild.id)] = "!"
+  with open("prefixes.json", "w") as f:
+    json.dump(prefixes,f)
+@client.command()
+@commands.has_permissions(administrator = True)
+async def changeprefix(ctx, prefix):
+  with open("prefixes.json", "r") as f:
+    prefixes = json.load(f)
+  prefixes[str(guild.id)] = prefix
+  with open("prefixes.json", "w") as f:
+    json.dump(prefixes,f)
+  await ctx.send(f"The prefix was changed to {prefix}")
+@client.event
+async def on_message(msg):
+  try:
+    if msg.mentions[0] == client.user:
+      with open("prefixes.json", "r") as f:
+        prefixes = json.load(f)
+      pre = prefixes[str(msg.guild.id)]
+      await msg.channel.send(f"My prefix for this server is {pre}")
+  except:
+    pass
+  await client.process_commands(msg)
 ourmessage = ""
 @client.event
 async def on_message(message):
