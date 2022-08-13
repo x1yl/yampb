@@ -3,6 +3,7 @@ from discord.ext import commands
 import os
 import time
 import json
+import random
 from discord import Color
 from discord.utils import get
 from discord.ext.commands import has_permissions, MissingPermissions
@@ -22,6 +23,14 @@ async def on_ready():
 async def on_message(message):
     if message.content == "ping":
         await message.channel.send("pong:ping_pong:", reference=message)
+    if message.content == "i choose rock":
+      a=random.randomint(1,3)
+      if a == 1:
+        await message.channel.send("I choose rock, draw", reference=message)
+      elif a == 2:
+        await message.channel.send("I choose paper, gg you win!", reference=message)
+      elif a == 3:
+        await message.channel.send("I choose scissors, you lost <6141_Letter_L:945766211520708738>", reference=message)
 @client.event
 async def on_raw_reaction_add(payload):
   messageID = '992448354715959407'
