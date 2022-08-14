@@ -21,7 +21,7 @@ async def on_ready():
   print("---------------------------")
 @client.event
 async def on_message(message):
-    if message == "!connect4":
+    if message.contentfo == "!connect4":
       await message.channel.send("How to play \n type the number corresponding to a row", reference=message)
       time.sleep(1)
       await message.channel.send("Proceed?", reference=message)
