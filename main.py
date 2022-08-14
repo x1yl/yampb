@@ -257,6 +257,10 @@ async def age(ctx):
   await msg.add_reaction('<:emoji_13:991763442274934855>')
   await msg.add_reaction('<:emoji_14:991763466295726161>')
 
+
+@client.command(pass_context=True)
+async def love(ctx, message):
+  await message.channel.send("success")
 inital_extensions = []
 
 for filename in os.listdir('./cogs'):

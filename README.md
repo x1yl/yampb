@@ -83,7 +83,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![yampb][product-screenshot]](https://example.com)
 
 Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `lifewrd`, `not`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
 
@@ -103,9 +103,6 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
 ### Prerequisites
 
 1. Discord Bot Token <a href="https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot">Guide (from discord.js but it's the same step)</a>
@@ -118,11 +115,19 @@ To get a local copy up and running follow these simple example steps.
    cd not
    pip install -r requirements.txt
    ```
+
+After installation finishes follow configuration instructions then run `python3 main.py` or `python main.py` to start the bot.
+  
 ### Configuration
-5. Run bot
-   ```sh
-   python main.py
-   ```
+
+Fill out `config.py`
+
+⚠️ **Note: Never commit or share your token or api keys publicly** ⚠️
+
+```json
+token = ''
+prefix = '!'
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
