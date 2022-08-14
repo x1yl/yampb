@@ -108,29 +108,17 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-Required application
-* python
-  ```link
-  https://www.python.org/downloads/
-  ```
+1. Discord Bot Token <a href="https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot">Guide (from discord.js but it's the same step)</a>
+2. Python 3.10.6 <a href="https://www.python.org/downloads/">Dowload</a>
 
 ### Installation
 
-1. Clone the repo
    ```sh
    git clone https://github.com/lifewrd/not.git
-   ```
-2. Cd into repo
-   ```sh
    cd not
-   ```
-3. Install packages from `requirements.txt`
-   ```sh
    pip install -r requirements.txt
    ```
-
-4. Put your bot token in between the `` in `token.py`
-
+### Configuration
 5. Run bot
    ```sh
    python main.py

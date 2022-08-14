@@ -7,12 +7,12 @@ import random
 from discord import Color
 from discord.utils import get
 from discord.ext.commands import has_permissions, MissingPermissions
-from tokens import *
+from config import *
 
 intents = discord.Intents.all()
 intents.members = True
 
-client = commands.Bot(command_prefix='!', intents=intents)
+client = commands.Bot(command_prefix = prefix, intents=intents)
 ourmessage = ""
 
 @client.event
