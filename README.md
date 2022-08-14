@@ -154,10 +154,10 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
+- [ ] Custom Prefix
+- [ ] Fix prefix
+- [ ] Commands
+    - [ ] connect 4
 
 See the [open issues](https://github.com/lifewrd/not/issues) for a full list of proposed features (and known issues).
 
@@ -207,8 +207,6 @@ Project Link: [https://github.com/lifewrd/not](https://github.com/lifewrd/not)
 ## Acknowledgments
 
 * [Template for the README](https://github.com/othneildrew/Best-README-Template)
-* []()
-* []()
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
