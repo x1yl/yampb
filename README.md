@@ -109,25 +109,29 @@ To get a local copy up and running follow these simple example steps.
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
-* npm
+* python
   ```sh
-  npm install npm@latest -g
+  https://www.python.org/downloads/
   ```
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
    git clone https://github.com/lifewrd/not.git
    ```
-3. Install NPM packages
+2. Cd into repo
    ```sh
-   npm install
+   cd not
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+3. Install packages from `requirements.txt`
+   ```sh
+   pip install -r requirements.txt
+   ```
+
+4. Run bot
+   ```sh
+   python main.py
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -180,7 +184,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the GNU GPLv3 License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -200,7 +204,7 @@ Project Link: [https://github.com/lifewrd/not](https://github.com/lifewrd/not)
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []()
+* [Template for the README](https://github.com/othneildrew/Best-README-Template)
 * []()
 * []()
 
@@ -223,7 +227,7 @@ Project Link: [https://github.com/lifewrd/not](https://github.com/lifewrd/not)
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [product-screenshot]: images/screenshot.png
-[Next.js]: https://img.shields.io/badge/discord.py-0769AD?style=flat&logo=discord&logoColor=white
+[Next.js]: https://img.shields.io/badge/discord.py-0769AD?style=for-the-badge&logo=discord&logoColor=white
 [Next-url]: https://discordpy.readthedocs.io/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
