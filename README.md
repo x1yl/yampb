@@ -223,7 +223,7 @@ Project Link: [https://github.com/lifewrd/not](https://github.com/lifewrd/not)
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [product-screenshot]: images/screenshot.png
-[Next.js]: https://img.shields.io/badge/discord.py-0769AD?style=for-the-badge&logo=discord&logoColor=white
+[Next.js]: https://img.shields.io/badge/discord.py-0769AD?style=flat&logo=discord&logoColor=white
 [Next-url]: https://discordpy.readthedocs.io/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
