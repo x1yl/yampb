@@ -83,9 +83,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![yampb][product-screenshot]](https://example.com)
+[![yampb][product-screenshot]](https://yampb.cf)
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `lifewrd`, `not`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+This is a discord bot built in discord.py as a hobby project. This bot will most likely be moved over to either discord.js or pycord.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -124,7 +124,7 @@ Fill out `config.py`
 
 ⚠️ **Note: Never commit or share your token or api keys publicly** ⚠️
 
-```json
+```sh
 token = ''
 prefix = '!'
 ```
@@ -138,7 +138,7 @@ prefix = '!'
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+_For more examples, please refer to the [Documentation](https://www.yampb.cf/docs/)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -188,7 +188,7 @@ Distributed under the GNU GPLv3 License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+Fryvex - [@thefryvex](https://twitter.com/thefryvex) - yampb@yampb.cf
 
 Project Link: [https://github.com/lifewrd/not](https://github.com/lifewrd/not)
 
