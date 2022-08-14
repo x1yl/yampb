@@ -34,10 +34,10 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">project_title</h3>
+<h3 align="center">Discord Bot</h3>
 
   <p align="center">
-    project_description
+    Discord bot made using discord.py
     <br />
     <a href="https://github.com/lifewrd/not"><strong>Explore the docs »</strong></a>
     <br />
@@ -108,9 +108,9 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+Required application
 * python
-  ```sh
+  ```link
   https://www.python.org/downloads/
   ```
 
@@ -129,7 +129,9 @@ This is an example of how to list things you need to use the software and how to
    pip install -r requirements.txt
    ```
 
-4. Run bot
+4. Put your bot token in between the `` in `token.py`
+
+5. Run bot
    ```sh
    python main.py
    ```
@@ -223,7 +225,7 @@ Project Link: [https://github.com/lifewrd/not](https://github.com/lifewrd/not)
 [issues-shield]: https://img.shields.io/github/issues/lifewrd/not.svg?style=for-the-badge
 [issues-url]: https://github.com/lifewrd/not/issues
 [license-shield]: https://img.shields.io/github/license/lifewrd/not.svg?style=for-the-badge
-[license-url]: https://github.com/lifewrd/not/blob/master/LICENSE.txt
+[license-url]: https://github.com/lifewrd/not/blob/main/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [product-screenshot]: images/screenshot.png
