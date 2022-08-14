@@ -30,7 +30,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/lifewrd/not">
+  <a href="https://github.com/lifewrd/yampb">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -39,14 +39,14 @@
   <p align="center">
     Discord bot made using discord.py
     <br />
-    <a href="https://github.com/lifewrd/not"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/lifewrd/yampb"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/lifewrd/not">View Demo</a>
+    <a href="https://github.com/lifewrd/yampb">View Demo</a>
     ·
-    <a href="https://github.com/lifewrd/not/issues">Report Bug</a>
+    <a href="https://github.com/lifewrd/yampb/issues">Report Bug</a>
     ·
-    <a href="https://github.com/lifewrd/not/issues">Request Feature</a>
+    <a href="https://github.com/lifewrd/yampb/issues">Request Feature</a>
   </p>
 </div>
 
@@ -67,6 +67,8 @@
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
+        <li><a href="#configuration">Configuration</a></li>
+        <li><a href="#deploy">Deploy</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
@@ -111,8 +113,8 @@ This is a discord bot built in discord.py as a hobby project. This bot will most
 ### Installation
 
    ```sh
-   git clone https://github.com/lifewrd/not.git
-   cd not
+   git clone https://github.com/lifewrd/yampb.git
+   cd yampb
    pip install -r requirements.txt
    ```
 
@@ -131,7 +133,19 @@ prefix = '!'
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+### Or Deploy
+If you want to deploy to cloud
 
+⚠️ **SUPPORT FOR DEPLOYMENTS TO ANYTHING OTHER THEN HEROKU NOT GUARANTEED** ⚠️
+[![Deploy to Heroku](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/heroku.svg)](https://heroku.com/deploy/?template=https://github.com/lifewrd/yampb)
+[![Run on Replit](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/replit.svg)](https://replit.com/github/lifewrd/yampb)
+[![Remix on Glitch](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/glitch.svg)](https://glitch.com/edit/#!/import/github/lifewrd/yampb)
+[![Deploy to IBM Cloud](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/ibmcloud.svg)](https://cloud.ibm.com/devops/setup/deploy?repository=https://github.com/lifewrd/yampb)
+[![Deploy to Amplify Console](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/amplifyconsole.svg)](https://console.aws.amazon.com/amplify/home#/deploy?repo=https://github.com/lifewrd/yampb)
+[![Run on Google Cloud](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/googlecloud.svg)](https://deploy.cloud.run/?git_repo=https://github.com/lifewrd/yampb)
+[![Deploy on Railway](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/railway.svg)](https://railway.app/new/template?template=https://github.com/lifewrd/yampb)
+[![Deploy to Vercel](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/vercel.svg)](https://vercel.com/new/clone?repository-url=https://github.com/lifewrd/yampb)
+[![Deploy to Netlify](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/netlify.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/lifewrd/yampb)
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -152,7 +166,7 @@ _For more examples, please refer to the [Documentation](https://www.yampb.cf/doc
 - [ ] Commands
     - [ ] connect 4
 
-See the [open issues](https://github.com/lifewrd/not/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/lifewrd/yampb/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -190,7 +204,7 @@ Distributed under the GNU GPLv3 License. See `LICENSE.txt` for more information.
 
 Fryvex - [@thefryvex](https://twitter.com/thefryvex) - yampb@yampb.cf
 
-Project Link: [https://github.com/lifewrd/not](https://github.com/lifewrd/not)
+Project Link: [https://github.com/lifewrd/yampb](https://github.com/lifewrd/yampb)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -207,16 +221,16 @@ Project Link: [https://github.com/lifewrd/not](https://github.com/lifewrd/not)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/lifewrd/not.svg?style=for-the-badge
-[contributors-url]: https://github.com/lifewrd/not/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/lifewrd/not.svg?style=for-the-badge
-[forks-url]: https://github.com/lifewrd/not/network/members
-[stars-shield]: https://img.shields.io/github/stars/lifewrd/not.svg?style=for-the-badge
-[stars-url]: https://github.com/lifewrd/not/stargazers
-[issues-shield]: https://img.shields.io/github/issues/lifewrd/not.svg?style=for-the-badge
-[issues-url]: https://github.com/lifewrd/not/issues
-[license-shield]: https://img.shields.io/github/license/lifewrd/not.svg?style=for-the-badge
-[license-url]: https://github.com/lifewrd/not/blob/main/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/lifewrd/yampb.svg?style=for-the-badge
+[contributors-url]: https://github.com/lifewrd/yampb/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/lifewrd/yampb.svg?style=for-the-badge
+[forks-url]: https://github.com/lifewrd/yampb/network/members
+[stars-shield]: https://img.shields.io/github/stars/lifewrd/yampb.svg?style=for-the-badge
+[stars-url]: https://github.com/lifewrd/yampb/stargazers
+[issues-shield]: https://img.shields.io/github/issues/lifewrd/yampb.svg?style=for-the-badge
+[issues-url]: https://github.com/lifewrd/yampb/issues
+[license-shield]: https://img.shields.io/github/license/lifewrd/yampb.svg?style=for-the-badge
+[license-url]: https://github.com/lifewrd/yampb/blob/main/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [product-screenshot]: images/screenshot.png
