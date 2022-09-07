@@ -12,11 +12,7 @@ from config import *
 intents = discord.Intents.all()
 intents.members = True
 
-single = "'"
-single += prefix
-different = "'"
-single += different
-
+##prefix no work, use ! as "prefix"
 client = commands.Bot(command_prefix=single, intents=intents)
 print(single)
 ourmessage = ""
