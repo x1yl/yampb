@@ -13,7 +13,7 @@ intents = discord.Intents.all()
 intents.members = True
 
 ##prefix no work, use ! as "prefix"
-client = commands.Bot(command_prefix=single, intents=intents)
+client = commands.Bot(command_prefix="!", intents=intents)
 print(single)
 ourmessage = ""
 
