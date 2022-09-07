@@ -12,8 +12,8 @@ from config import *
 intents = discord.Intents.all()
 intents.members = True
 
-client = commands.Bot(command_prefix=prefix, intents=intents)
-print(prefix)
+client = commands.Bot(command_prefix='!', intents=intents)
+print(command_prefix)
 ourmessage = ""
 
 @client.event
