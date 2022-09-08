@@ -18,7 +18,7 @@ ourmessage = ""
 @client.event
 async def on_ready():
   print("---------------------------")
-  print(f"Logged in as {client.user}")
+  print(f"Logged in as {client.user}!")
   print("---------------------------")
 @client.event
 async def on_message(message):
