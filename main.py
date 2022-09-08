@@ -11,24 +11,22 @@ from config import *
 
 intents = discord.Intents.all()
 intents.members = True
-
-##prefix no work, use ! as "prefix"
+##prefix no work, use ! as "prefix"	
 client = commands.Bot(command_prefix="!", intents=intents)
 ourmessage = ""
 
 @client.event
 async def on_ready():
+  print("---------------------------")
   print(f"Logged in as {client.user}")
   print("---------------------------")
-
-@client.command()
-async def why(ctx):
-    await ctx.send(client.latency)
-
 @client.event
-async def on_message(message):
+async def on_message(message, ctx):
     if message.content == "!connect4":
       await message.channel.send("<:c4_1:1008273636102250558><:c4_2:1008273628346990622><:c4_3:1008273620423938128><:c4_4:1008273612714803310><:c4_5:1008273609275486218><:c4_6:1008273605399953469><:c4_7:1008273603374096474>\n ", reference=message)  
+    if message.content == "ping":
+        await message.channel.send("pong:ping_pong: {client.latency}", reference=message)
+        await ctx.send(client.latency)
     if message.content == "!rock":
       a=random.randint(1,3)
       print(a)
