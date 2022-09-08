@@ -21,12 +21,11 @@ async def on_ready():
   print(f"Logged in as {client.user}")
   print("---------------------------")
 @client.event
-async def on_message(ctx, message):
+async def on_message(message):
     if message.content == "!connect4":
       await message.channel.send("<:c4_1:1008273636102250558><:c4_2:1008273628346990622><:c4_3:1008273620423938128><:c4_4:1008273612714803310><:c4_5:1008273609275486218><:c4_6:1008273605399953469><:c4_7:1008273603374096474>\n ", reference=message)  
     if message.content == "!ping":
-        await message.channel.send("pong:ping_pong: {client.latency}", reference=message)
-        await ctx.send(client.latency)
+        await message.channel.send(f'Client latency is {client.latency} :ping_pong:', reference=message)
     if message.content == "!rock":
       a=random.randint(1,3)
       print(a)
