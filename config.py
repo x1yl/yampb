@@ -1,2 +1,7 @@
-token = 'OTkxMDg1ODcyNTM3NTQ2ODgz.G6ha6z.ZiDlJ0dcaf-eufSdz2TRsQLN8ArjP_uCJATFbs'
+#place token between ''
+#DO NOT UNDER ANY CIRCUMSTANCE SHARE YOUR TOKEN
+token = ''
+#prefix not working
 prefix = '!'
+#Disregard test
+test=''
