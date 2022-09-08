@@ -127,7 +127,10 @@ Fill out `config.py`
 ⚠️ **Note: Never commit or share your token or api keys publicly** ⚠️
 
 ```sh
+#place token between ''
+#DO NOT UNDER ANY CIRCUMSTANCE SHARE YOUR TOKEN
 token = ''
+#prefix not working
 prefix = '!'
 ```
 
