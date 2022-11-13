@@ -20,7 +20,7 @@ class Bot(commands.Bot):
         intents = discord.Intents.all()
         super().__init__(command_prefix = get_prefix(prefix), intents = intents)
     async def setup_hook(self):
-        await self.tree.sync(guild = discord.Object(id = 942802471615606895))
+        await self.tree.sync()
         print(f"Synced slash commands for {self.user}.")
 
     async def on_command_error(self, ctx, error):
@@ -35,7 +35,6 @@ async def on_guild_join(guild, ctx):
     await bot.change_nickname(me, {username})
 
 @bot.hybrid_command(name = "changeprefix", with_app_command = True, description = "Changes server prefix (manage server required)")
-@app_commands.guilds(discord.Object(id = 942802471615606895))
 @commands.has_guild_permissions(manage_messages = True)
 async def changeprefix(ctx: commands.Context, prefixes: str):
     global prefix
@@ -45,14 +44,12 @@ async def changeprefix(ctx: commands.Context, prefixes: str):
 
 
 @bot.hybrid_command(name = "ping", with_app_command = True, description = "Replies with client latency")
-@app_commands.guilds(discord.Object(id = 942802471615606895))
-@commands.has_permissions(administrator = True)
 async def ping(ctx: commands.Context):
     await ctx.defer(ephemeral = True)
     await ctx.reply(f"The client latency is {bot.latency} :ping_pong:")
 
 @bot.hybrid_command(name = "activedev", with_app_command = True, description = "Use this for active dev badge", pass_context = True)
-@app_commands.guilds(discord.Object(id = 942802471615606895))
+##@app_commands.guilds(discord.Object(id = 942802471615606895))
 @commands.is_owner()
 async def ActiveDev(ctx: commands.Context,):
     print(f"> {ctx.author} used the command.")
@@ -71,7 +68,7 @@ async def ActiveDev(ctx: commands.Context,):
 
 
 @bot.hybrid_command(name = "rockpaperscissors", with_app_command = True, description = "Play rock paper scissors with me!", pass_context = True)
-@app_commands.guilds(discord.Object(id = 942802471615606895))
+##@app_commands.guilds(discord.Object(id = 942802471615606895))
 async def RockPaperScissors(ctx: commands.Context, choice: str):
     RockPaperScissorRandom=random.randint(1,3)
     if RockPaperScissorRandom == 1:
@@ -104,3 +101,11 @@ async def RockPaperScissors_autocompletion(ctx: commands.Context, current: str) 
             data.append(app_commands.Choice(name=choice, value=choice))
     return data
 bot.run(token)
+#python discord bot code above ^^
+from flask import Flask
+app = Flask(__name__)
+@app.route('/')
+def index():
+  return "Bot up and running"
+if __name__ == '__main__':
+  app.run(host="0.0.0.0",debug=True,port=8080)
