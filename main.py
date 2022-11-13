@@ -1,4 +1,5 @@
 import discord
+import typing
 from discord.ext import commands
 import os
 import time
@@ -7,25 +8,78 @@ import random
 from discord import Color
 from discord.utils import get
 from discord.ext.commands import has_permissions, MissingPermissions
+from discord import app_commands, Intents, Client, Interaction
 from config import *
 
-intents = discord.Intents.all()
-intents.members = True
-##prefix no work, use ! as "prefix"	
-client = commands.Bot(command_prefix="!", intents=intents)
-ourmessage = ""
+def get_prefix(prefix,p):
+    return str(prefix + p)
+z = get_prefix(prefix, "")
+##prefix no work, use ! as "prefix"
+class bot(commands.Bot):
+  def __init__(self):
+    super().__init__(intents=discord.Intents.all(), command_prefix = "!")
+    self.synced = False
 
-@client.event
-async def on_ready():
-  print("---------------------------")
-  print(f"Logged in as {client.user}!")
-  print("---------------------------")
+  async def on_ready(self):
+    await self.wait_until_ready()
+    if not self.synced:
+      await tree.sync(guild = discord.Object(id = 942802471615606895))
+      self.synced= True
+    print(f"We have logged in as {self.user} with the prefix as {z}.")
+client= bot()
+async def hello(interaction: discord.Interaction, name: str):
+    print(f"> {interaction.user} used the command.")
+    await interaction.response.send_message("\n".join([
+        f"Client latency is {client.latency} :ping_pong:",
+        "",
+        "__**Where's my badge?**__",
+        "Wait 24 hrs",
+        "",
+        "__**It's been 24 hours, now how do I get the badge?**__",
+        "Go to <https://discord.com/developers/active-developer> and fill out the 'form' there.",
+        "",
+        "__**Active Developer Badge Updates**__",
+        "Updates regarding the Active Developer badge can be found at <discord.gg/discord-developers> - in the <#1040380406299644064>.",
+    ]), ephemeral = True)
+
+@tree.command(name = "rockpaperscissors", description = "Play rock paper scissors with me!", guild = discord.Object(id = 942802471615606895))
+async def RockPaperScissors(interaction: discord.Interaction, choice: str):
+    a=random.randint(1,3)
+    if a == 1:
+        b = "rock"
+    elif a == 2:
+        b = "paper"
+    elif a == 3:
+        b = "scissor"
+    if b == choice:
+        await interaction.response.send_message(f"Draw! I chose {choice}, try again.")
+    else:
+      if ((b == "rock") and (choice == "paper")):
+          await interaction.response.send_message(f"I choose {b}, gg you win <a:8922_Letter_W:945766211436818525>!")
+      elif ((b == "rock") and (choice == "scissor")):
+          await interaction.response.send_message(f"I choose {b}, you lose <a:6141_Letter_L:945766211520708738>")
+      elif ((b == "paper") and (choice == "scissor")):
+          await interaction.response.send_message(f"I choose {b}, gg you win <a:8922_Letter_W:945766211436818525>!")
+      elif ((b == "paper") and (choice == "rock")):
+          await interaction.response.send_message(f"I choose {b}, you lose <a:6141_Letter_L:945766211520708738>")
+      elif ((b == "scissor") and (choice == "paper")):
+          await interaction.response.send_message(f"I choose {b}, you lose <a:6141_Letter_L:945766211520708738>")
+      elif ((b == "scissor") and (choice == "rock")):
+          await interaction.response.send_message(f"I choose {b}, gg you win <a:8922_Letter_W:945766211436818525>!")
+
+@RockPaperScissors.autocomplete("choice")
+async def RockPaperScissors_autocompletion(interaction: discord.Interaction, current: str) -> typing.List[app_commands.Choice[str]]:
+    data = []
+    for choice in ['rock', 'paper', 'scissor']:
+        if current.lower() in choice.lower():
+            data.append(app_commands.Choice(name=choice, value=choice))
+    return data
+
+
 @client.event
 async def on_message(message):
     if message.content == "!connect4":
-      await message.channel.send("<:c4_1:1008273636102250558><:c4_2:1008273628346990622><:c4_3:1008273620423938128><:c4_4:1008273612714803310><:c4_5:1008273609275486218><:c4_6:1008273605399953469><:c4_7:1008273603374096474>\n ", reference=message)  
-    if message.content == "!ping":
-        await message.channel.send(f'Client latency is {client.latency} :ping_pong:', reference=message)
+      await message.channel.send("<:c4_1:1008273636102250558><:c4_2:1008273628346990622><:c4_3:1008273620423938128><:c4_4:1008273612714803310><:c4_5:1008273609275486218><:c4_6:1008273605399953469><:c4_7:1008273603374096474>\n ", reference=message)
     if message.content == "!rock":
       a=random.randint(1,3)
       print(a)
