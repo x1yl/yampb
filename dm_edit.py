@@ -1,1 +1,0 @@
-await ctx.send("", delete_after=5)
