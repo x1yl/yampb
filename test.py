@@ -8,6 +8,7 @@ import discord
 from discord import Client, Color, Intents, Interaction, app_commands
 from discord.ext import commands
 from discord.ext.commands import MissingPermissions, has_permissions
+from discord.ui import view
 from discord.utils import get
 
 from config import *
@@ -82,7 +83,6 @@ async def ping(ctx: commands.Context):
 async def ActiveDev(
     ctx: commands.Context,
 ):
-    print(f"> {ctx.author} used the command.")
     await ctx.reply(
         "\n".join(
             [
@@ -161,10 +161,10 @@ async def RockPaperScissors_autocompletion(
 @has_permissions(administrator=True, kick_members=True)
 async def kick(ctx: commands.Context, member: discord.Member, *, reason=None):
     if reason == None:
-        reason = f"No reason was provided by {ctx.author}"
+        reason = f"No reason was provided"
     await ctx.guild.kick(member, reason=reason)
     await ctx.defer(ephemeral=True)
-    await ctx.reply(f"User {member.mention} has been kicked for {reason}")
+    await ctx.reply(f"User {member.mention} has been kicked", delete_after=5)
 
 
 @kick.error
@@ -176,7 +176,7 @@ async def kickerror(ctx, error):
         )
     else:
         await ctx.reply(
-            "I can't banned this user!\nMake sure to put my role at the top and that they don't have administrator permission.",
+            "I can't banned this user!",
             ephemeral=True,
         )
 
@@ -185,10 +185,10 @@ async def kickerror(ctx, error):
 @has_permissions(ban_members=True, administrator=True)
 async def ban(ctx: commands.Context, member: discord.Member, *, reason=None):
     if reason == None:
-        reason = f"No reason was provided by {ctx.author}"
+        reason = f"No reason was provided"
     await ctx.guild.ban(member, reason=reason)
     await ctx.defer(ephemeral=True)
-    await ctx.reply(f"User {member.mention} has been banned for {reason}")
+    await ctx.reply(f"User {member.mention} has been banned", delete_after=5)
 
 
 @ban.error
@@ -200,9 +200,28 @@ async def banerror(ctx, error):
         )
     else:
         await ctx.reply(
-            "I can't banned this user!\nMake sure to put my role at the top and that they don't have administrator permission.",
+            "I can't banned this user!",
             ephemeral=True,
         )
+
+
+@bot.hybrid_command(
+    name="banlist", with_app_command=True, description="See a list of banned users"
+)
+@commands.has_permissions(ban_members=True, administrator=True)
+async def banlist(ctx: commands.Context):
+    bannedlistdescription = []
+    async for entry in ctx.guild.bans():
+        bannedlistdescription.append(
+            f"**Banned User:**\n{entry.user.mention} ({entry.user.id})\n\n**Reason for Ban:**\n{entry.reason}\n\n"
+        )
+        print(entry.user, entry.reason)
+    bannedlist = discord.Embed(
+        title="Banned Users!",
+        description=f"{''.join(bannedlistdescription)}",
+    )
+    await ctx.defer(ephemeral=True)
+    await ctx.reply(embed=bannedlist)
 
 
 @bot.hybrid_command(name="unban", with_app_command=True, description="Unban a user")
@@ -212,7 +231,7 @@ async def unban(ctx: commands.Context, id, reason=None):
     await ctx.guild.unban(user)
     await ctx.defer(ephemeral=True)
     if reason == None:
-        reason = "No reason was provided"
+        reason = f"No reason was provided"
     await ctx.reply(f"{user.mention} was unbanned")
     link = await ctx.channel.create_invite(
         reason=f"Sent to unbanned user {user}", max_uses=1
@@ -222,7 +241,87 @@ async def unban(ctx: commands.Context, id, reason=None):
         description=f"Click [here]({link}) to join back.\n\n**Reason**\n{reason}\n**Action by**\n{ctx.author}",
     )
     await user.send(embed=unbannedInvite)
-    print(f"Invite sent to {user}")
+
+
+##@bot.hybrid_group(fallback="get")
+##async def help(ctx):
+##    await ctx.reply(f"Showing tag: {name}")
+##
+##
+##@help.command()
+##async def rockpaperscissors(ctx):
+##    await ctx.reply(f"Created tag: {name}")
+
+
+@bot.command(pass_context=True)
+@bot.event
+async def help(ctx):
+    contents = [
+        discord.Embed(
+            title="Utilities commands",
+            description=f"""
+text 1    
+""",
+            colour=0xF00C0C,
+        ),
+        discord.Embed(
+            title="Moderation commands",
+            description=f"""
+text 2
+""",
+            colour=0xF00C0C,
+        ),
+        discord.Embed(
+            title="Fun commands",
+            description=f"""
+text 3
+""",
+            colour=0xF00C0C,
+        ),
+        discord.Embed(
+            title="Coding commands",
+            description=f"""
+text 4
+""",
+            colour=0xF00C0C,
+        ),
+        discord.Embed(
+            title="Bot's info | ID: 856643485340139580",
+            description="""
+text 5
+""",
+            colour=0xF00C0C,
+        ),
+    ]
+    pages = 5
+    cur_page = 1
+    message = await ctx.send(embed=contents[cur_page - 1])
+
+    await message.add_reaction("◀️")
+    await message.add_reaction("▶️")
+
+    def check(reaction, user):
+        return user == ctx.author and str(reaction.emoji) in ["◀️", "▶️"]
+
+    while True:
+        try:
+            reaction, user = await bot.wait_for("reaction_add", check=check)
+
+            if str(reaction.emoji) == "▶️" and cur_page != pages:
+                cur_page += 1
+                await message.edit(embed=contents[cur_page - 1])
+                await message.remove_reaction(reaction, user)
+
+            elif str(reaction.emoji) == "◀️" and cur_page > 1:
+                cur_page -= 1
+                await message.edit(embed=contents[cur_page - 1])
+                await message.remove_reaction(reaction, user)
+
+            else:
+                await message.remove_reaction(reaction, user)
+
+        except:
+            break
 
 
 bot.run(token)
