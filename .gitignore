@@ -133,5 +133,6 @@ dmypy.json
 config.py
 w.py
 main.py
+prefixes.json
 connect4.txt
 e.py
