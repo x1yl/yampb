@@ -1,27 +1,35 @@
-import json
 import os
 import random
-import time
 import typing
 
 import discord
-from discord import Client, Color, Intents, Interaction, app_commands
+from discord import  app_commands
 from discord.ext import commands
 from discord.ext.commands import MissingPermissions, has_permissions
 from discord.ui import view
 from discord.utils import get
-
+import discordmongo
+import motor.motor_asyncio
 from config import *
 
 
-def get_prefix(prefix):
-    return str(prefix)
+async def get_prefix(bot, message):
+    if not message.guild:
+        return commands.when_mentioned_or(bot.DEFAULT_PREFIX)(bot, message)
+
+    try:
+        data = await bot.prefixes.find(message.guild.id)
+        if not data or "prefix" not in data:
+            return commands.when_mentioned_or(bot.DEFAULT_PREFIX)(bot, message)
+        return commands.when_mentioned_or(data["prefix"])(bot, message)
+    except:
+        return commands.when_mentioned_or(bot.DEFAULT_PREFIX)(bot, message)
 
 
 class Bot(commands.Bot):
     def __init__(self):
         intents = discord.Intents.all()
-        super().__init__(command_prefix=get_prefix(prefix), intents=intents)
+        super().__init__(command_prefix=get_prefix, intents=intents)
 
     async def setup_hook(self):
         await self.tree.sync()
@@ -29,6 +37,7 @@ class Bot(commands.Bot):
 
 
 bot = Bot()
+bot.DEFAULT_PREFIX = "!"
 
 
 @bot.event
@@ -50,17 +59,35 @@ async def on_guild_join(ctx, guild):
     print(f"{bot.user} just joined {guild.id}")
 
 
-"""@bot.hybrid_command(
+@bot.hybrid_command(
+    name="prefix",
+    with_app_command=True,
+    description="Replies with prefix",
+)
+async def prefix(ctx: commands.Context):
+    prefix = await bot.prefixes.find(ctx.guild.id)
+    if prefix is None:
+        await ctx.reply(f"The server prefix is {bot.DEFAULT_PREFIX}")
+    else:
+        await ctx.reply(f'The server prefix is {prefix["prefix"]}')
+
+
+@bot.hybrid_command(
     name="changeprefix",
     with_app_command=True,
-    description="Changes server prefix (manage server required)",
+    description="Changes server prefix (manage guild required)",
 )
-@commands.has_guild_permissions(manage_messages=True)
-async def changeprefix(ctx: commands.Context, prefixes: str):
-    global prefix
-    del prefix
-    prefix = "".join(prefixes)
-    await ctx.reply(f"Server Prefix Changed to {prefix}", ephemeral=True)"""
+@commands.has_guild_permissions(manage_guild=True)
+async def changeprefix(ctx: commands.Context, prefix=None):
+    if prefix is None:
+        return await ctx.reply("A prefix is required!")
+
+    data = await bot.prefixes.find(ctx.guild.id)
+    if data is None or "prefix" not in data:
+        data = {"_id": ctx.guild.id, "prefix": prefix}
+    data["prefix"] = prefix
+    await bot.prefixes.upsert(data)
+    await ctx.reply(f"I have changed the server's prefix to {prefix}")
 
 
 @bot.hybrid_command(
@@ -231,7 +258,7 @@ async def unban(ctx: commands.Context, id, reason=None):
     await ctx.guild.unban(user)
     await ctx.defer(ephemeral=True)
     if reason == None:
-        reason = f"No reason was provided"
+        reason = "No reason was provided"
     await ctx.reply(f"{user.mention} was unbanned")
     link = await ctx.channel.create_invite(
         reason=f"Sent to unbanned user {user}", max_uses=1
@@ -241,5 +268,22 @@ async def unban(ctx: commands.Context, id, reason=None):
         description=f"Click [here]({link}) to join back.\n\n**Reason**\n{reason}\n**Action by**\n{ctx.author}",
     )
     await user.send(embed=unbannedInvite)
+
+
+@bot.hybrid_group(fallback="get")
+async def helps(ctx, name):
+    user = await bot.fetch_user(ctx.author.id)
+    await user.send()
+
+
+@helps.command()
+async def moderation(ctx, name):
+    await ctx.reply(f"Created tag: {name}")
+
+
+if __name__ == "__main__":
+    bot.mongo = motor.motor_asyncio.AsyncIOMotorClient(mongo_url)
+    bot.db = bot.mongo[db_name]
+    bot.prefixes = discordmongo.Mongo(connection_url=bot.db, dbname=collection_name)
 
 bot.run(token)

@@ -15,6 +15,7 @@ crashtest
 cryptography
 debugpy
 discord
+discordmongopy
 discord.py
 distlib
 docopt
@@ -34,6 +35,7 @@ keyring
 lockfile
 macropy3
 MarkupSafe
+motor
 msgpack
 multidict
 mypy
