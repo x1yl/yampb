@@ -130,9 +130,28 @@ Fill out `config.py`
 #place token between ''
 #DO NOT UNDER ANY CIRCUMSTANCE SHARE YOUR TOKEN
 token = ''
-#prefix not working
-prefix = '!'
+
+mongo_url = ''
+
+db_name = ''
+
+collection_name = ''
 ```
+
+### Setting Up MongoDB
+
+1. Create a account at [mongodb](https://mongodb.com)
+2. Create a cluster (shared clusters are free)
+3. Wait for cluster to be finished
+4. Click connect, allow access from anywhere, and add ip address
+5. Create a Database User (remember the password) and click Choose a connection method
+6. Select 'Connect your application'
+7. Select Python for the Driver and you python version for Version
+8. Copy the snippet of code and put it between the quotes in config.py at mongo_url = ''
+9. Go to Database Access, press edit and in the Built-in Role dropdown select Read and write to any database, then press update user
+10. Go back to Database, click Browse Collections and select Add My Own Data
+11. Enter a database name and collection name
+12. Enter your database name between the quotes at db_name = '' and your collection name between the quotes at collection_name = ''
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -164,10 +183,11 @@ _For more examples, please refer to the [Documentation](https://www.yampb.cf/doc
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Custom Prefix
-- [ ] Fix prefix
+- [x] Custom Prefix
+- [x] Fix prefix
 - [ ] Commands
     - [ ] connect 4
+    - [ ] help commands
 
 See the [open issues](https://github.com/x1yl/yampb/issues) for a full list of proposed features (and known issues).
 
